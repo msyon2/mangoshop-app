@@ -32,27 +32,31 @@ const MainPage = () => {
         </div>
         <h1>Products</h1>
         <div id="product-list">
-          <div className="product-card">
-            <div>
-              <img
-                className="product-img"
-                src="images/products/food1.jpg"
-                alt=""
-              />
-            </div>
-            <div className="product-contents">
-              <span className="product-name">습식사료</span>
-              <span className="product-price">50000원</span>
-              <div className="product-seller">
-                <img
-                  src="images/icons/avatar.png"
-                  alt=""
-                  className="product-avatar"
-                />
-                <span>seller</span>
+          {products.map((product, idx) => {
+            return (
+              <div className="product-card" key={idx}>
+                <div>
+                  <img
+                    className="product-img"
+                    src={product.imgUrl}
+                    alt={product.name}
+                  />
+                </div>
+                <div className="product-contents">
+                  <span className="product-name">{product.name}</span>
+                  <span className="product-price">{product.price}원</span>
+                  <div className="product-seller">
+                    <img
+                      src="images/icons/avatar.png"
+                      alt=""
+                      className="product-avatar"
+                    />
+                    <span>{product.seller}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
       <div id="footer">
@@ -60,7 +64,6 @@ const MainPage = () => {
         <a href="#">이용약관</a>
         <a href="#">통신판매업:123-1234</a>
         <a href="#">사업자등록번호:456-56-78951</a>
-        <a href=""></a>
       </div>
     </div>
   );
