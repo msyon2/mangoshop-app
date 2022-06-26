@@ -3,10 +3,16 @@ import { Routes, Route, Link } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import UploadPage from "./components/UploadPage";
 import ProductPage from "./components/ProductPage";
+import "./App.css";
 
 function App() {
   return (
     <React.Fragment>
+      <div id="header">
+        <div id="header-area">
+          <img src="images/icons/logo.png" alt="" />
+        </div>
+      </div>
       <Routes>
         <Route path="/" element={<MainPage></MainPage>} />
         <Route path="/upload" element={<UploadPage></UploadPage>} />
