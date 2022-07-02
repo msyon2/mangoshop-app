@@ -25,7 +25,7 @@ const ProductPage = () => {
     return <h1>상품정보를 받고 있습니다.</h1>;
   }
   return (
-    <div>
+    <div id="body">
       <button onClick={() => Navigate(-1)}>back</button>
       <div id="image-box">
         <img src={`/${product.imgUrl}`} alt={product.name} />

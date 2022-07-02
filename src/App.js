@@ -1,16 +1,30 @@
 import React, { ReactFragment } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import UploadPage from "./components/UploadPage";
 import ProductPage from "./components/ProductPage";
 import "./App.css";
+import "antd/dist/antd.css";
+import { UploadOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 function App() {
+  let navigate = useNavigate();
   return (
     <React.Fragment>
       <div id="header">
         <div id="header-area">
-          <img src="images/icons/logo.png" alt="" />
+          <Link to="/">
+            <img src="images/icons/logo.png" alt="" />
+          </Link>
+          <Button
+            size="large"
+            shape="round"
+            icon={<UploadOutlined />}
+            onClick={() => navigate("/upload")}
+          >
+            UPLOAD
+          </Button>
         </div>
       </div>
       <Routes>

@@ -23,10 +23,6 @@
   /* flex: 1 1 15%; */
   justify-content: center;
   align-items: center;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 #footer > a {
   text-decoration: none;
@@ -45,8 +41,9 @@
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
-#header-area > img {
+#header-area img {
   width: 128px;
 }
 #product-list {
