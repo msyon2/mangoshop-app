@@ -102,7 +102,8 @@ const UploadPage = () => {
             <InputNumber
               className="upload-price"
               size="large"
-              initialValue={0}
+              min={0}
+              defaultlValue={0}
             />
           </Form.Item>
           <Divider />

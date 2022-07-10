@@ -4,7 +4,7 @@ import MainPage from "./components/MainPage";
 import UploadPage from "./components/UploadPage";
 import ProductPage from "./components/ProductPage";
 import "./App.css";
-import "antd/dist/antd.css";
+import "antd/dist/antd.min.css";
 import { UploadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 

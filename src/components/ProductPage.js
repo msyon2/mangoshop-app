@@ -11,11 +11,9 @@ const ProductPage = () => {
   /* component executes only when update occurs */
   useEffect(() => {
     axios
-      .get(
-        `https://9ee8e607-a58c-49d7-bc21-e1315bad24ab.mock.pstmn.io/products/${id}`
-      )
+      .get(`http://localhost:8080/products/${id}`)
       .then((result) => {
-        setproduct(result.data);
+        setproduct(result.data.product);
       })
       .catch((error) => {
         console.error(`network error ${error}`);
