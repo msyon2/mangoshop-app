@@ -1,6 +1,12 @@
 #upload-container {
   padding-top: 36px;
 }
+#upload-img {
+  width: 200px;
+  height: 200px;
+  margin-left: 16px;
+  object-fit: contain;
+}
 #upload-img-placeholder {
   width: 200px;
   height: 200px;

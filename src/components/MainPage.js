@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { Carousel } from "antd";
 import { Link } from "react-router-dom";
 import "./MainPage.css";
 import axios from "axios";
+import { API_URL } from "../config/constants";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 const MainPage = () => {
   let [products, setProducts] = useState([]);
-  const url = "http://localhost:8080/products";
-  //"https://9ee8e607-a58c-49d7-bc21-e1315bad24ab.mock.pstmn.io/products";
+  const [banners, setBanners] = useState([]);
 
+  /* products 통신 */
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${API_URL}/products`)
       .then((result) => {
         products = result.data.product;
         setProducts(products);
@@ -21,15 +23,35 @@ const MainPage = () => {
       .catch((error) => {
         console.log(`network error ${error}`);
       });
+
+    /* banners 통신 */
+    axios
+      .get(`${API_URL}/banners`)
+      .then((result) => {
+        const banners = result.data.banners;
+        setBanners(banners);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (
     <div>
       <div id="body">
-        <div id="banner">
-          <img src="images/banners/banner1.png" alt="" />
-        </div>
-        <h1>Products</h1>
+        <Carousel autoplay autoplaySpeed={3000}>
+          {banners.map((banner, index) => {
+            return (
+              <Link to={banner.href} key={index}>
+                <div id="banner">
+                  <img src={`${API_URL}/${banner.imgUrl}`} />
+                </div>
+              </Link>
+            );
+          })}
+        </Carousel>
+
+        <h1 id="product-title">Products</h1>
         <div id="product-list">
           {products.map((product, idx) => {
             return (
@@ -38,7 +60,7 @@ const MainPage = () => {
                   <div>
                     <img
                       className="product-img"
-                      src={product.imgUrl}
+                      src={`${API_URL}/${product.imgUrl}`}
                       alt={product.name}
                     />
                   </div>

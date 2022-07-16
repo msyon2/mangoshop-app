@@ -1,6 +1,8 @@
+import { API_URL } from "../config/constants";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import dayjs from "dayjs";
 import "./ProductPage.css";
 
 const ProductPage = () => {
@@ -11,7 +13,7 @@ const ProductPage = () => {
   /* component executes only when update occurs */
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/products/${id}`)
+      .get(`${API_URL}/products/${id}`)
       .then((result) => {
         setproduct(result.data.product);
       })
@@ -26,7 +28,7 @@ const ProductPage = () => {
     <div id="body">
       <button onClick={() => Navigate(-1)}>back</button>
       <div id="image-box">
-        <img src={`/${product.imgUrl}`} alt={product.name} />
+        <img src={`${API_URL}/${product.imgUrl}`} alt={product.name} />
       </div>
       <div id="profile-box">
         <img src="/images/icons/avatar.png" alt={product.seller} />
@@ -35,8 +37,10 @@ const ProductPage = () => {
       <div id="contents-box">
         <div id="name">{product.name}</div>
         <div id="price">{product.price}</div>
-        <div id="creatAt">2022.6.20</div>
-        <div id="description">{product.description}</div>
+        <div id="creatAt">
+          {dayjs(product.createdAt).format("YYYY년 MM월 DD일")}
+        </div>
+        <pre id="description">{product.description}</pre>
       </div>
     </div>
   );
